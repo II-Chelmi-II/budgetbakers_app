@@ -80,7 +80,7 @@ public class Account {
     }
 
 
-    // fonction qui permet d’obtenir le solde d’un compte à une date et heure donnée
+    // fonction qui permet d’obtenir le solde d’un compte à une date et heure données
     public double getBalanceAtDateTime(LocalDateTime dateTime) {
         double balanceAtDateTime = balance.getAmount();
 
@@ -122,5 +122,18 @@ public class Account {
         balanceHistory.add(currentBalance);
 
         return balanceHistory;
+    }
+
+    // Fonction qui permet de faire un transfert d’argent entre deux comptes
+    public static void transferMoney(Account sourceAccount, Account targetAccount, double amount) {
+        if (sourceAccount.equals(targetAccount)) {
+            throw new IllegalArgumentException("Un compte ne peut pas effectuer un transfert vers lui-même.");
+        }
+
+        // Effectuer le transfert depuis le compte source
+        sourceAccount.performTransaction("Transfert sortant vers " + targetAccount.getName(), amount, TransactionType.DEBIT);
+
+        // Effectuer le transfert vers le compte cible
+        targetAccount.performTransaction("Transfert entrant depuis " + sourceAccount.getName(), amount, TransactionType.CREDIT);
     }
 }
