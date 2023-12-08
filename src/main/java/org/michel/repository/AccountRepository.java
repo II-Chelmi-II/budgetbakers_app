@@ -14,14 +14,14 @@ public class AccountRepository {
 
     public void insertAccount(Account account) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD)) {
-            String sql = "INSERT INTO Account (id, name, balance_amount, balance_last_update_date, currency_id, type) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Account (account_id, name, balance_amount, balance_last_update_date, currency_id, type) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, account.getId());
+                statement.setInt(1, account.getAccount_id());
                 statement.setString(2, account.getName());
                 statement.setDouble(3, account.getBalance().getAmount());
                 statement.setTimestamp(4, Timestamp.valueOf(account.getBalance().getLastUpdateDate()));
                 // Assuming currency_id is an INT in the database
-                statement.setInt(5, account.getCurrency().getId());
+                statement.setInt(5, account.getCurrency().getCurrency_id());
                 statement.setString(6, account.getType().name());
                 statement.executeUpdate();
             }
@@ -32,7 +32,7 @@ public class AccountRepository {
 
     public Account getAccountById(int accountId) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD)) {
-            String sql = "SELECT * FROM Account WHERE id = ?";
+            String sql = "SELECT * FROM Account WHERE account_id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, accountId);
                 ResultSet resultSet = statement.executeQuery();
@@ -64,14 +64,14 @@ public class AccountRepository {
 
     public void updateAccount(Account account) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD)) {
-            String sql = "UPDATE Account SET name = ?, balance_amount = ?, balance_last_update_date = ?, currency_id = ?, type = ? WHERE id = ?";
+            String sql = "UPDATE Account SET name = ?, balance_amount = ?, balance_last_update_date = ?, currency_id = ?, type = ? WHERE account_id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, account.getName());
                 statement.setDouble(2, account.getBalance().getAmount());
                 statement.setTimestamp(3, Timestamp.valueOf(account.getBalance().getLastUpdateDate()));
-                statement.setInt(4, account.getCurrency().getId());
+                statement.setInt(4, account.getCurrency().getCurrency_id());
                 statement.setString(5, account.getType().name());
-                statement.setInt(6, account.getId());
+                statement.setInt(6, account.getAccount_id());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -82,7 +82,7 @@ public class AccountRepository {
     private Account mapAccount(ResultSet resultSet) throws SQLException {
         // Mapping des colonnes du résultat vers un objet Account
         // Assurez-vous d'ajuster cela en fonction de votre modèle de données
-        int id = resultSet.getInt("id");
+        int accountId = resultSet.getInt("account_id");
         String name = resultSet.getString("name");
         double balanceAmount = resultSet.getDouble("balance_amount");
         Timestamp balanceLastUpdateDate = resultSet.getTimestamp("balance_last_update_date");
@@ -90,7 +90,7 @@ public class AccountRepository {
         String type = resultSet.getString("type");
 
         // Création et retour de l'objet Account
-        return new Account(id, name, new Balance(balanceAmount, balanceLastUpdateDate.toLocalDateTime().toString()),
+        return new Account(accountId, name, new Balance(balanceAmount, balanceLastUpdateDate.toLocalDateTime().toString()),
                 new ArrayList<>(), null, AccountType.valueOf(type));
     }
 }
