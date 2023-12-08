@@ -23,3 +23,42 @@ CREATE TABLE IF NOT EXISTS Transaction (
     account_id INT,
     FOREIGN KEY (account_id) REFERENCES Account(id)
 );
+
+-- INSERT devises
+INSERT INTO Currency (currency_id, name, code)
+VALUES (1, 'Euro', 'EUR');
+
+INSERT INTO Currency (currency_id, name, code)
+VALUES (2, 'Ariary', 'MGA');
+
+-- INSERT comptes
+INSERT INTO Account (account_id, name, balance_amount, balance_last_update_date, currency_id, type)
+VALUES (1, 'Compte Courant', 1000.00, NOW(), 1, 'BANQUE');
+
+INSERT INTO Account (account_id, name, balance_amount, balance_last_update_date, currency_id, type)
+VALUES (2, 'Compte Épargne', 500.00, NOW(), 1, 'BANQUE');
+
+INSERT INTO Account (account_id, name, balance_amount, balance_last_update_date, currency_id, type)
+VALUES (3, 'Portefeuille Espèces', 200.00, NOW(), 1, 'ESPÈCE');
+
+INSERT INTO Account (account_id, name, balance_amount, balance_last_update_date, currency_id, type)
+VALUES (4, 'Portefeuille Mobile Money', 300.00, NOW(), 1, 'MOBILE_MONEY');
+
+-- INSERT transactions
+INSERT INTO Transaction (transaction_id, label, amount, date_time, transaction_type, account_id)
+VALUES ('1', 'Dépôt Initial', 1000.00, NOW(), 'CREDIT', 1);
+
+INSERT INTO Transaction (transaction_id, label, amount, date_time, transaction_type, account_id)
+VALUES ('2', 'Dépôt Initial', 500.00, NOW(), 'CREDIT', 2);
+
+INSERT INTO Transaction (transaction_id, label, amount, date_time, transaction_type, account_id)
+VALUES ('3', 'Dépôt Initial', 200.00, NOW(), 'CREDIT', 3);
+
+INSERT INTO Transaction (transaction_id, label, amount, date_time, transaction_type, account_id)
+VALUES ('4', 'Dépôt Initial', 300.00, NOW(), 'CREDIT', 4);
+
+INSERT INTO Transaction (transaction_id, label, amount, date_time, transaction_type, account_id)
+VALUES ('5', 'Achat en ligne', 50.00, NOW(), 'DEBIT', 1);
+
+INSERT INTO Transaction (transaction_id, label, amount, date_time, transaction_type, account_id)
+VALUES ('6', 'Intérêts mensuels', 10.00, NOW(), 'CREDIT', 2);
