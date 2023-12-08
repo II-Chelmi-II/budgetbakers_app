@@ -1,6 +1,7 @@
 package org.michel.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
@@ -89,6 +90,30 @@ public class Account {
 
         return balanceAtDateTime;
     }
+
+    // Fonction pour obtenir l'historique du solde dans une plage de date et heure
+    public List<Double> getBalanceHistory(LocalDateTime startDate, LocalDateTime endDate) {
+        List<Double> balanceHistory = new ArrayList<>();
+        double currentBalance = balance.getAmount();
+
+        // Parcourir la liste des transactions dans l'intervalle spécifié
+        for (Transaction transaction : transactions) {
+            if (transaction.getDateTime().isAfter(startDate) && transaction.getDateTime().isBefore(endDate.plusSeconds(1))) {
+                // Ajouter le solde actuel avant la transaction à l'historique
+                balanceHistory.add(currentBalance);
+
+                // Mettre à jour le solde en fonction de la transaction
+                if (transaction.getTransactionType() == TransactionType.DEBIT && type != AccountType.BANQUE) {
+                    currentBalance -= transaction.getAmount();
+                } else if (transaction.getTransactionType() == TransactionType.CREDIT) {
+                    currentBalance += transaction.getAmount();
+                }
+            }
+        }
+
+        // Ajouter le solde final à l'historique
+        balanceHistory.add(currentBalance);
+
+        return balanceHistory;
+    }
 }
-
-
