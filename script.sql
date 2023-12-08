@@ -1,4 +1,10 @@
-CREATE TABLE Account (
+CREATE TABLE IF NOT EXISTS Currency (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    code VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS Account (
     id INT PRIMARY KEY,
     name VARCHAR(100),
     balance_amount DOUBLE,
@@ -8,13 +14,7 @@ CREATE TABLE Account (
     FOREIGN KEY (currency_id) REFERENCES Currency(id)
 );
 
-CREATE TABLE Currency (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    code VARCHAR(10)
-);
-
-CREATE TABLE Transaction (
+CREATE TABLE IF NOT EXISTS Transaction (
     id INT PRIMARY KEY,
     label VARCHAR(100),
     amount DOUBLE,
