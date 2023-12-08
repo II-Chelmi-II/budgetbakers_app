@@ -1,0 +1,269 @@
+openapi: 3.0.0
+info:
+  title: Wallet API
+  version: 1.0.0
+  description: Multi-platform wallet management application
+
+paths:
+  /accounts:
+    get:
+      summary: Retrieve the list of accounts
+      tags:
+        - Accounts
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: "Current Account"
+                  balance:
+                    amount: 5000.00
+                    last_update_date: "2023-01-01"
+                  transactions: []
+                  currency: "Euro"
+                  type: "Bank"
+        "400":
+          description: Invalid request
+
+    post:
+      summary: Add an account
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                balance:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    last_update_date:
+                      type: string
+                      format: date
+                transactions:
+                  type: array
+                  items: {}
+                currency:
+                  type: string
+                type:
+                  type: string
+      responses:
+        "201":
+          description: Account added successfully
+        "400":
+          description: Invalid request
+
+  /accounts/{id}:
+    get:
+      summary: Retrieve details of an account
+      tags:
+        - Accounts
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              example:
+                id: 1
+                name: "Current Account"
+                balance:
+                  amount: 5000.00
+                  last_update_date: "2023-01-01"
+                transactions: []
+                currency: "Euro"
+                type: "Bank"
+        "400":
+          description: Invalid request
+
+    put:
+      summary: Update details of an account
+      tags:
+        - Accounts
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                balance:
+                  type: object
+                  properties:
+                    amount:
+                      type: number
+                    last_update_date:
+                      type: string
+                      format: date
+                transactions:
+                  type: array
+                  items: {}
+                currency:
+                  type: string
+                type:
+                  type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              example:
+                id: 1
+                name: "Current Account updated"
+                balance:
+                  amount: 5500.00
+                  last_update_date: "2023-01-02"
+                transactions: []
+                currency: "Euro"
+                type: "Bank"
+        "400":
+          description: Invalid request
+
+  /currencies:
+    get:
+      summary: Retrieve the list of currencies
+      tags:
+        - Currencies
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: "Euro"
+                  code: "EUR"
+                - id: 2
+                  name: "Ariary"
+                  code: "MGA"
+        "400":
+          description: Invalid request
+
+  /transactions:
+    get:
+      summary: Retrieve the list of transactions
+      tags:
+        - Transactions
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              example:
+                - id: 1
+                  label: "Bank Loan"
+                  amount: 1000.00
+                  date_time: "2023-01-01T12:00:00"
+                  type: "Debit"
+                - id: 2
+                  label: "Repayment"
+                  amount: 500.00
+                  date_time: "2023-01-02T14:00:00"
+                  type: "Credit"
+        "400":
+          description: Invalid request
+
+    post:
+      summary: Add a transaction
+      tags:
+        - Transactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                amount:
+                  type: number
+                date_time:
+                  type: string
+                  format: date-time
+                type:
+                  type: string
+      responses:
+        "201":
+          description: Transaction added successfully
+        "400":
+          description: Invalid request
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        balance:
+          type: object
+          properties:
+            amount:
+              type: number
+            last_update_date:
+              type: string
+              format: date
+        transactions:
+          type: array
+          items: {}
+        currency:
+          type: string
+        type:
+          type: string
+
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        code:
+          type: string
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: integer
+        label:
+          type: string
+        amount:
+          type: number
+        date_time:
+          type: string
+          format: date-time
+        type:
+          type: string
+
+  responses:
+    ErrorResponse:
+      description: An error response
+      content:
+        application/json:
+          example:
+            error: "An error occurred"
