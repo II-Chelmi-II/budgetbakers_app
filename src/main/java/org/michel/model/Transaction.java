@@ -3,22 +3,22 @@ package org.michel.model;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    private String id;
-    private String label;
+    private final int transaction_id;
+    private final String label;
     private Double amount;
     private LocalDateTime dateTime;
     private TransactionType transactionType;
 
-    public Transaction(String id, String label, Double amount, LocalDateTime dateTime, TransactionType transactionType) {
-        this.id = id;
+    public Transaction(int transaction_id, String label, Double amount, LocalDateTime dateTime, TransactionType transactionType) {
+        this.transaction_id = transaction_id;
         this.label = label;
         this.amount = amount;
         this.dateTime = dateTime;
         this.transactionType = transactionType;
     }
 
-    public String getId() {
-        return id;
+    public int getTransaction_id() {
+        return transaction_id;
     }
 
     public String getLabel() {

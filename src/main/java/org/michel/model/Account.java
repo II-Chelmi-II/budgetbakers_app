@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
-    private String id;
-    private String name;
+    private final int account_id;
+    private final String name;
     private Balance balance;
     private List<Transaction> transactions;
     private Currency currency;
     private AccountType type;
 
-    public Account(String id, String name, Balance balance, List<Transaction> transactions, Currency currency, AccountType type) {
-        this.id = id;
+    public Account(int account_id, String name, Balance balance, List<Transaction> transactions, Currency currency, AccountType type) {
+        this.account_id = account_id;
         this.name = name;
         this.balance = balance;
         this.transactions = transactions;
@@ -21,8 +21,8 @@ public class Account {
         this.type = type;
     }
 
-    public String getId() {
-        return id;
+    public int getAccount_id() {
+        return account_id;
     }
 
     public String getName() {
