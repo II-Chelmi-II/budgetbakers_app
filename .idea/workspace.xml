@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c4d19453-9398-4d67-abb9-1e8b5ec2681e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/java/org/michel/model/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/java/org/michel/model/Currency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/java/org/michel/model/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/java/org/michel/repository/AccountRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/java/org/michel/repository/CurrencyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/java/org/michel/repository/TransactionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/java/org/michel/service/TransactionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BudgetBakers/src/main/resources/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/AccountType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/Balance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/Currency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/TransactionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/CRUD/AuthorCrudOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/CRUD/BookCrudOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/CRUD/CrudOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/CRUD/SubscribersCrudOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/Model/Author.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/Model/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/Model/Subscribers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/Model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../library_management/src/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api.yaml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2ZFjTd9GJUlrhFAlCiDYdh3KiaB" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "onboarding.tips.debug.path": "/Users/chelmi/Documents/L2/PROG3/Wallet/src/main/java/org/michel/Main.java"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4d19453-9398-4d67-abb9-1e8b5ec2681e" name="Changes" comment="" />
+      <created>1702024730675</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702024730675</updated>
+    </task>
+    <servers />
+  </component>
+</project>
