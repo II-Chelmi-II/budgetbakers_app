@@ -71,6 +71,24 @@ public class Account {
         // Retour du compte mis à jour
         return this;
     }
+
+    // fonction qui permet d’obtenir le solde d’un compte à une date et heure donnée
+    public double getBalanceAtDateTime(LocalDateTime dateTime) {
+        double balanceAtDateTime = balance.getAmount();
+
+        // Parcourir la liste des transactions pour ajuster le solde
+        for (Transaction transaction : transactions) {
+            if (transaction.getDateTime().isBefore(dateTime) || transaction.getDateTime().isEqual(dateTime)) {
+                if (transaction.getTransactionType() == TransactionType.DEBIT && type != AccountType.BANQUE) {
+                    balanceAtDateTime -= transaction.getAmount();
+                } else if (transaction.getTransactionType() == TransactionType.CREDIT) {
+                    balanceAtDateTime += transaction.getAmount();
+                }
+            }
+        }
+
+        return balanceAtDateTime;
+    }
 }
 
 
