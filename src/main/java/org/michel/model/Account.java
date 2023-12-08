@@ -51,9 +51,15 @@ public class Account {
 
     // Fonction pour effectuer une transaction
     public Account performTransaction(String label, double amount, TransactionType transactionType) {
-        // Création d'une nouvelle transaction avec la date actuelle
+        // Création d'une nouvelle transaction avec l'ID en entier et la date actuelle
         LocalDateTime dateTime = LocalDateTime.now();
-        Transaction newTransaction = new Transaction(String.valueOf(transactions.size() + 1), label, amount, dateTime, transactionType);
+        Transaction newTransaction = new Transaction(
+                transactions.size() + 1,  // Convertir la chaîne en entier
+                label,
+                amount,
+                dateTime,
+                transactionType
+        );
 
         // Mise à jour du solde en fonction du type de transaction
         if (transactionType == TransactionType.DEBIT && type != AccountType.BANQUE) {
@@ -72,6 +78,7 @@ public class Account {
         // Retour du compte mis à jour
         return this;
     }
+
 
     // fonction qui permet d’obtenir le solde d’un compte à une date et heure donnée
     public double getBalanceAtDateTime(LocalDateTime dateTime) {
