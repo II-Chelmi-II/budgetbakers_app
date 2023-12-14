@@ -22,8 +22,9 @@
       <change afterPath="$PROJECT_DIR$/../library_management/src/Model/Subscribers.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../library_management/src/Model/User.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../library_management/src/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/michel/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AccountTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +56,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;TD1-Wallet-STD22101&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature__in__progress&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/chelmi/Documents/L2/PROG3/Wallet&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;/Users/chelmi/Documents/L2/PROG3/Wallet/src/main/java/org/michel/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
@@ -69,6 +70,45 @@
     ]
   }
 }</component>
+  <component name="RunManager" selected="JUnit.AccountTest.performTransaction_debitTransactionWithSufficientBalance_balanceUpdated">
+    <configuration name="AccountTest.getBalanceAtDateTime_balanceAtSpecificDateTime_returnCorrectBalance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wallet" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AccountTest" />
+      <option name="METHOD_NAME" value="getBalanceAtDateTime_balanceAtSpecificDateTime_returnCorrectBalance" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountTest.performTransaction_debitTransactionWithSufficientBalance_balanceUpdated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wallet" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AccountTest" />
+      <option name="METHOD_NAME" value="performTransaction_debitTransactionWithSufficientBalance_balanceUpdated" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountTest.transferMoney_transferToSameAccount_throwException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wallet" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AccountTest" />
+      <option name="METHOD_NAME" value="transferMoney_transferToSameAccount_throwException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AccountTest.performTransaction_debitTransactionWithSufficientBalance_balanceUpdated" />
+        <item itemvalue="JUnit.AccountTest.transferMoney_transferToSameAccount_throwException" />
+        <item itemvalue="JUnit.AccountTest.getBalanceAtDateTime_balanceAtSpecificDateTime_returnCorrectBalance" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -79,6 +119,17 @@
       <updated>1702024730675</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/michel/model/Account.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
