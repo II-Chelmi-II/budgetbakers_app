@@ -70,7 +70,7 @@ public class Account {
     // Fonction pour effectuer une transaction avec une catégorie
     public Account performTransaction(String label, double amount, TransactionType transactionType, TransactionCategory category) {
         LocalDateTime dateTime = LocalDateTime.now();
-        Transaction newTransaction = createTransaction(label, amount, dateTime, transactionType);
+        Transaction newTransaction = createTransaction(label, amount, dateTime, transactionType, category);
 
         try {
             updateBalance(newTransaction);
@@ -85,24 +85,10 @@ public class Account {
         return this;
     }
 
-    public List<TransferHistory> getTransferHistory(LocalDateTime startDate, LocalDateTime endDate) {
-        List<TransferHistory> filteredHistory = new ArrayList<>();
-
-        for (TransferHistory transferHistory : transferHistoryList) {
-            LocalDateTime transferDate = transferHistory.getDateTime();
-
-            if (transferDate.isAfter(startDate) && transferDate.isBefore(endDate.plusSeconds(1))) {
-                filteredHistory.add(transferHistory);
-            }
-        }
-
-        return filteredHistory;
-    }
-
-    // Fonction pour effectuer une transaction
+    // Fonction pour effectuer une transaction sans catégorie
     public Account performTransaction(String label, double amount, TransactionType transactionType) {
         LocalDateTime dateTime = LocalDateTime.now();
-        Transaction newTransaction = createTransaction(label, amount, dateTime, transactionType);
+        Transaction newTransaction = createTransaction(label, amount, dateTime, transactionType, TransactionCategory.INCONNU);
 
         try {
             updateBalance(newTransaction);
@@ -117,13 +103,14 @@ public class Account {
         return this;
     }
 
-    private Transaction createTransaction(String label, double amount, LocalDateTime dateTime, TransactionType transactionType) {
+    private Transaction createTransaction(String label, double amount, LocalDateTime dateTime, TransactionType transactionType, TransactionCategory category) {
         return new Transaction(
                 transactions.size() + 1,
                 label,
                 amount,
                 dateTime,
-                transactionType
+                transactionType,
+                category
         );
     }
 
@@ -216,6 +203,4 @@ public class Account {
         // Effectuer le transfert vers le compte cible
         targetAccount.performTransaction("Transfert entrant depuis " + sourceAccount.getName(), amount, TransactionType.CREDIT);
     }
-
-
 }
