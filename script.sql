@@ -63,7 +63,7 @@ VALUES ('5', 'Achat en ligne', 50.00, NOW(), 'DEBIT', 1);
 INSERT INTO Transaction (transaction_id, label, amount, date_time, transaction_type, account_id)
 VALUES ('6', 'Intérêts mensuels', 10.00, NOW(), 'CREDIT', 2);
 
--- CREATE currency_value 
+-- CREATE currency_value
 CREATE TABLE IF NOT EXISTS currency_value (
     id INT PRIMARY KEY,
     currency_from INT,
