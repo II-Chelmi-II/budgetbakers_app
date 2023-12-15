@@ -22,9 +22,6 @@
       <change afterPath="$PROJECT_DIR$/../library_management/src/Model/Subscribers.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../library_management/src/Model/User.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../library_management/src/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/michel/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/michel/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AccountTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,17 +116,6 @@
       <updated>1702024730675</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/michel/model/Account.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
