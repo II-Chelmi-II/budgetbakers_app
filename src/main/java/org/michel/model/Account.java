@@ -52,6 +52,39 @@ public class Account {
 
     private final List<TransferHistory> transferHistoryList = new ArrayList<>();
 
+    // Catégories de transactions
+    public enum TransactionCategory {
+        NOURRITURE_BOISSON,
+        ACHATS_EN_LIGNE,
+        LOGEMENT,
+        TRANSPORTS,
+        VEHICULE,
+        LOISIRS,
+        MULTIMEDIA_INFORMATIQUE,
+        FRAIS_FINANCIERS_INVESTISSEMENTS,
+        REVENU,
+        AUTRES,
+        INCONNU
+    }
+
+    // Fonction pour effectuer une transaction avec une catégorie
+    public Account performTransaction(String label, double amount, TransactionType transactionType, TransactionCategory category) {
+        LocalDateTime dateTime = LocalDateTime.now();
+        Transaction newTransaction = createTransaction(label, amount, dateTime, transactionType);
+
+        try {
+            updateBalance(newTransaction);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Erreur lors de la transaction : " + e.getMessage());
+        }
+
+        if (transactionType == TransactionType.DEBIT && type != AccountType.BANQUE) {
+            addTransferHistory(newTransaction.getTransaction_id(), dateTime);
+        }
+
+        return this;
+    }
+
     public List<TransferHistory> getTransferHistory(LocalDateTime startDate, LocalDateTime endDate) {
         List<TransferHistory> filteredHistory = new ArrayList<>();
 

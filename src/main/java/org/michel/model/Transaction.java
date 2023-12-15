@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 public class Transaction {
     private final int transaction_id;
     private final String label;
-    private Double amount;
-    private LocalDateTime dateTime;
-    private TransactionType transactionType;
+    private final Double amount;
+    private final LocalDateTime dateTime;
+    private final TransactionType transactionType;
 
     public Transaction(int transaction_id, String label, Double amount, LocalDateTime dateTime, TransactionType transactionType) {
         this.transaction_id = transaction_id;

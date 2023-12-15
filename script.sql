@@ -73,3 +73,10 @@ CREATE TABLE IF NOT EXISTS currency_value (
     FOREIGN KEY (currency_from) REFERENCES currencies(currency_id),
     FOREIGN KEY (currency_to) REFERENCES currencies(currency_id)
 );
+
+-- CREATE transaction_category
+CREATE TABLE IF NOT EXISTS transaction_category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(255) UNIQUE NOT NULL,
+    type ENUM('CREDIT', 'DEBIT') NOT NULL
+);
