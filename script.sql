@@ -80,3 +80,23 @@ CREATE TABLE IF NOT EXISTS transaction_category (
     name VARCHAR(255) UNIQUE NOT NULL,
     type ENUM('CREDIT', 'DEBIT') NOT NULL
 );
+
+-- CREATE function that returns the sum of entries and output of money within an intervall of date 
+DELIMITER //
+
+CREATE PROCEDURE get_money_flow(
+    IN account_id INT,
+    IN start_date_time DATETIME,
+    IN end_date_time DATETIME,
+    OUT result DECIMAL(10, 2)
+)
+BEGIN
+    SELECT COALESCE(SUM(CASE WHEN transaction_type = 'CREDIT' THEN amount ELSE 0 END), 0) -
+           COALESCE(SUM(CASE WHEN transaction_type = 'DEBIT' THEN amount ELSE 0 END), 0)
+    INTO result
+    FROM transactions
+    WHERE account_id = account_id
+        AND transaction_date_time BETWEEN start_date_time AND end_date_time;
+END //
+
+DELIMITER ;
