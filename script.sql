@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS transaction_category (
     type ENUM('CREDIT', 'DEBIT') NOT NULL
 );
 
--- CREATE function that returns the sum of entries and output of money within an intervall of date 
+-- CREATE function that returns the sum of entries and output of money within an intervall of date
 DELIMITER //
 
 CREATE PROCEDURE get_money_flow(
@@ -97,6 +97,32 @@ BEGIN
     FROM transactions
     WHERE account_id = account_id
         AND transaction_date_time BETWEEN start_date_time AND end_date_time;
+END //
+
+DELIMITER ;
+
+-- CREATE fonction SQL qui retourne la somme des montants de chaque catégorie, entre la plage de date donnée.
+DELIMITER //
+
+CREATE FUNCTION get_category_amounts(
+    account_id_param INT,
+    start_date_time_param DATETIME,
+    end_date_time_param DATETIME
+)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE total_amount INT;
+
+    SELECT COALESCE(SUM(CASE WHEN tc.category = 'Restaurant' THEN t.amount ELSE 0 END), 0) +
+           COALESCE(SUM(CASE WHEN tc.category = 'Salaire' THEN t.amount ELSE 0 END), 0)
+    INTO total_amount
+    FROM transactions t
+    LEFT JOIN transaction_categories tc ON t.category_id = tc.category_id
+    WHERE t.account_id = account_id_param
+        AND t.transaction_date_time BETWEEN start_date_time_param AND end_date_time_param;
+
+    RETURN total_amount;
 END //
 
 DELIMITER ;
