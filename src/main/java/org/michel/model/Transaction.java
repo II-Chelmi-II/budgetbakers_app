@@ -8,7 +8,7 @@ public class Transaction {
     private final Double amount;
     private final LocalDateTime dateTime;
     private final TransactionType transactionType;
-    private Account.TransactionCategory category;
+    private final Account.TransactionCategory category;
 
     public Transaction(int transaction_id, String label, Double amount, LocalDateTime dateTime, TransactionType transactionType, Account.TransactionCategory category) {
         this.transaction_id = transaction_id;

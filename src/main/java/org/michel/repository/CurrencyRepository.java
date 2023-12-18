@@ -10,7 +10,7 @@ import org.michel.model.Currency;
 public class CurrencyRepository {
     public void insertCurrency(Currency currency) {
         try (Connection connection = ConnectionDB.getConnection()) {
-            String sql = "INSERT INTO Currency (currency_id, name, code) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO currencies (currency_id, name, code) VALUES (?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, currency.getCurrency_id());
                 statement.setString(2, currency.getName());
@@ -24,7 +24,7 @@ public class CurrencyRepository {
 
     public Currency getCurrencyById(int currencyId) {
         try (Connection connection = ConnectionDB.getConnection()) {
-            String sql = "SELECT * FROM Currency WHERE currency_id = ?";
+            String sql = "SELECT * FROM currencies WHERE currency_id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, currencyId);
                 ResultSet resultSet = statement.executeQuery();
@@ -41,7 +41,7 @@ public class CurrencyRepository {
     public List<Currency> getAllCurrencies() {
         List<Currency> currencies = new ArrayList<>();
         try (Connection connection = ConnectionDB.getConnection()) {
-            String sql = "SELECT * FROM Currency";
+            String sql = "SELECT * FROM currencies";
             try (Statement statement = connection.createStatement()) {
                 ResultSet resultSet = statement.executeQuery(sql);
                 while (resultSet.next()) {

@@ -31,7 +31,7 @@ public class TransactionRepository {
     public List<Transaction> getTransactionsByAccountId(int accountId) {
         List<Transaction> transactions = new ArrayList<>();
         try (Connection connection = ConnectionDB.getConnection()) {
-            String sql = "SELECT * FROM Transaction WHERE account_id = ?";
+            String sql = "SELECT * FROM transactions WHERE account_id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, accountId);
                 ResultSet resultSet = statement.executeQuery();
@@ -45,17 +45,36 @@ public class TransactionRepository {
         return transactions;
     }
 
-    private Transaction mapTransaction(ResultSet resultSet) throws SQLException {
+    public Transaction getTransaction(int transactionId) {
+        try (Connection connection = ConnectionDB.getConnection()) {
+            String sql = "SELECT * FROM transactions WHERE transaction_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, transactionId);
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    return mapTransaction(resultSet);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
+    private Transaction mapTransaction(ResultSet resultSet) throws SQLException {
         int transactionId = resultSet.getInt("transaction_id");
         String label = resultSet.getString("label");
         double amount = resultSet.getDouble("amount");
         LocalDateTime dateTime = resultSet.getTimestamp("date_time").toLocalDateTime();
         String transactionType = resultSet.getString("transaction_type");
 
-        return new Transaction(transactionId, label, amount, dateTime, TransactionType.valueOf(transactionType));
-    }
+        Account.TransactionCategory category = null;
+        if (resultSet.getMetaData().getColumnCount() > 5) {
+            category = Account.TransactionCategory.valueOf(resultSet.getString("category"));
+        }
 
+        return new Transaction(transactionId, label, amount, dateTime, TransactionType.valueOf(transactionType), category);
+    }
 
     // fonction Java qui n’utilise pas la fonction SQL de la question 2) mais qui retourne le même résultat
     public double getSumOfEntriesAndExits(Account account, LocalDateTime startDateTime, LocalDateTime endDateTime) {

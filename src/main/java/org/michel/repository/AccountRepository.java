@@ -13,7 +13,7 @@ import org.michel.model.Currency;
 public class AccountRepository {
     public void insertAccount(Account account) {
         try (Connection connection = ConnectionDB.getConnection()) {
-            String sql = "INSERT INTO Account (account_id, name, balance_amount, balance_last_update_date, currency_id, type) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO accounts (account_id, name, balance_amount, balance_last_update_date, currency_id, type) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, account.getAccount_id());
                 statement.setString(2, account.getName());
@@ -47,7 +47,7 @@ public class AccountRepository {
     public List<Account> getAllAccounts() {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = ConnectionDB.getConnection()) {
-            String sql = "SELECT * FROM Account";
+            String sql = "SELECT * FROM accounts";
             try (Statement statement = connection.createStatement()) {
                 ResultSet resultSet = statement.executeQuery(sql);
                 while (resultSet.next()) {

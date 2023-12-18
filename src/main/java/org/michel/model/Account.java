@@ -17,7 +17,7 @@ public class Account {
         this.account_id = account_id;
         this.name = name;
         this.balance = balance;
-        this.transactions = transactions;
+        this.transactions = (transactions != null) ? transactions : new ArrayList<>();  // Initialisez avec une liste vide si transactions est null
         this.currency = currency;
         this.type = type;
     }
@@ -114,6 +114,7 @@ public class Account {
         );
     }
 
+
     private void updateBalance(Transaction transaction) {
         if (transaction.getTransactionType() == TransactionType.DEBIT && type != AccountType.BANQUE) {
             if (balance.getAmount() < transaction.getAmount()) {
@@ -170,26 +171,27 @@ public class Account {
         List<Double> balanceHistory = new ArrayList<>();
         double currentBalance = balance.getAmount();
 
+        // Ajouter le solde initial à l'historique
+        balanceHistory.add(currentBalance);
+
         // Parcourir la liste des transactions dans l'intervalle spécifié
         for (Transaction transaction : transactions) {
             if (transaction.getDateTime().isAfter(startDate) && transaction.getDateTime().isBefore(endDate.plusSeconds(1))) {
-                // Ajouter le solde actuel avant la transaction à l'historique
-                balanceHistory.add(currentBalance);
-
                 // Mettre à jour le solde en fonction de la transaction
                 if (transaction.getTransactionType() == TransactionType.DEBIT && type != AccountType.BANQUE) {
                     currentBalance -= transaction.getAmount();
                 } else if (transaction.getTransactionType() == TransactionType.CREDIT) {
                     currentBalance += transaction.getAmount();
                 }
+
+                // Ajouter le solde actuel à l'historique
+                balanceHistory.add(currentBalance);
             }
         }
 
-        // Ajouter le solde final à l'historique
-        balanceHistory.add(currentBalance);
-
         return balanceHistory;
     }
+
 
     // Fonction qui permet de faire un transfert d’argent entre deux comptes
     public static void transferMoney(Account sourceAccount, Account targetAccount, double amount) {
